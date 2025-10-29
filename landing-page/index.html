@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StreamCut Pro - Automated Video Editor for Twitch Streamers</title>
+    <meta name="description" content="Turn 8-hour streams into 45 minutes of content in just 10 minutes. No editing skills required. Stop paying $200/year - own it once, use forever.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .feature-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        .pulse-animation {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: .5;
+            }
+        }
+
+        .hero-video-bg {
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23667eea" fill-opacity="0.1" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,112C672,96,768,96,864,112C960,128,1056,160,1152,160C1248,160,1344,128,1392,112L1440,96L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path></svg>') no-repeat center top;
+            background-size: cover;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <i class="fas fa-cut text-purple-600 text-2xl mr-3"></i>
+                    <span class="text-xl font-bold gradient-text">StreamCut Pro</span>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#features" class="text-gray-700 hover:text-purple-600 transition">Features</a>
+                    <a href="#pricing" class="text-gray-700 hover:text-purple-600 transition">Pricing</a>
+                    <a href="#how-it-works" class="text-gray-700 hover:text-purple-600 transition">How It Works</a>
+                    <a href="#contact" class="gradient-bg text-white px-4 py-2 rounded-lg hover:opacity-90 transition">Get Early Access</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-video-bg gradient-bg text-white py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <div class="inline-block bg-purple-800 bg-opacity-50 px-4 py-2 rounded-full text-sm font-semibold mb-6">
+                    <i class="fas fa-rocket mr-2"></i>Beta Launch - Limited Early Access
+                </div>
+                <h1 class="text-5xl md:text-6xl font-black mb-6 leading-tight">
+                    Stop Spending Hours<br/>Editing Your Streams
+                </h1>
+                <p class="text-xl md:text-2xl mb-8 text-purple-100 max-w-3xl mx-auto">
+                    Turn your 8-hour Twitch VOD into 45 minutes of content in just <span class="font-bold text-white">10 minutes</span>.
+                    No editing skills required.
+                </p>
+
+                <!-- Email Capture Form -->
+                <div class="max-w-md mx-auto mb-8">
+                    <form id="email-form" class="flex flex-col sm:flex-row gap-3" action="https://formspree.io/f/xblrvdnr" method="POST">
+                        <input
+                            type="email"
+                            name="email"
+                            placeholder="Enter your email"
+                            required
+                            class="flex-1 px-6 py-4 rounded-lg text-gray-900 text-lg focus:outline-none focus:ring-4 focus:ring-purple-300"
+                        >
+                        <button
+                            type="submit"
+                            class="bg-gray-900 text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-gray-800 transition transform hover:scale-105"
+                        >
+                            Get Beta Access <i class="fas fa-arrow-right ml-2"></i>
+                        </button>
+                    </form>
+                    <p class="text-sm text-purple-100 mt-3">
+                        <i class="fas fa-lock mr-1"></i> Join 500+ streamers on the waitlist
+                    </p>
+                </div>
+
+                <div class="flex flex-wrap justify-center gap-6 text-sm">
+                    <div class="flex items-center">
+                        <i class="fas fa-check-circle text-green-400 mr-2"></i>
+                        <span>No monthly fees</span>
+                    </div>
+                    <div class="flex items-center">
+                        <i class="fas fa-check-circle text-green-400 mr-2"></i>
+                        <span>100% private</span>
+                    </div>
+                    <div class="flex items-center">
+                        <i class="fas fa-check-circle text-green-400 mr-2"></i>
+                        <span>Unlimited file sizes</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                    The Problem Every Streamer Faces
+                </h2>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="text-center p-6">
+                    <div class="text-5xl mb-4">😴</div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Hours of Dead Air</h3>
+                    <p class="text-gray-600">Your 6-hour stream has 4+ hours of loading screens, AFK breaks, and silence</p>
+                </div>
+                <div class="text-center p-6">
+                    <div class="text-5xl mb-4">⏰</div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Manual Editing Takes Forever</h3>
+                    <p class="text-gray-600">Spending 8+ hours manually cutting dead space from a single stream</p>
+                </div>
+                <div class="text-center p-6">
+                    <div class="text-5xl mb-4">💸</div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Expensive Tools or Editors</h3>
+                    <p class="text-gray-600">Paying $200-350/year for tools or $50-200 per stream for editors</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+                    Built Specifically for Streamers
+                </h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                    Unlike general video editors, StreamCut Pro understands your workflow
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
+                <div class="bg-white p-8 rounded-2xl shadow-lg feature-card">
+                    <div class="w-14 h-14 gradient-bg rounded-xl flex items-center justify-center mb-4">
+                        <i class="fas fa-bolt text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Blazing Fast</h3>
+                    <p class="text-gray-600">Process 4-hour streams in 5-15 minutes. No cloud uploads, everything runs locally on your machine.</p>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="bg-white p-8 rounded-2xl shadow-lg feature-card">
+                    <div class="w-14 h-14 gradient-bg rounded-xl flex items-center justify-center mb-4">
+                        <i class="fas fa-robot text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">AI-Powered Detection</h3>
+                    <p class="text-gray-600">Uses OpenAI Whisper + FFmpeg to intelligently detect and remove dead air, not just silence.</p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="bg-white p-8 rounded-2xl shadow-lg feature-card">
+                    <div class="w-14 h-14 gradient-bg rounded-xl flex items-center justify-center mb-4">
+                        <i class="fas fa-layer-group text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Batch Processing</h3>
+                    <p class="text-gray-600">Drop 50 VODs, go to bed, wake up to edited content. Competitors can't do this.</p>
+                </div>
+
+                <!-- Feature 4 -->
+                <div class="bg-white p-8 rounded-2xl shadow-lg feature-card">
+                    <div class="w-14 h-14 gradient-bg rounded-xl flex items-center justify-center mb-4">
+                        <i class="fas fa-infinity text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Unlimited File Sizes</h3>
+                    <p class="text-gray-600">14+ hour marathon streams? No problem. Cloud tools cap at 2-4 hours.</p>
+                </div>
+
+                <!-- Feature 5 -->
+                <div class="bg-white p-8 rounded-2xl shadow-lg feature-card">
+                    <div class="w-14 h-14 gradient-bg rounded-xl flex items-center justify-center mb-4">
+                        <i class="fas fa-lock text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">100% Private</h3>
+                    <p class="text-gray-600">Everything stays on your computer. No cloud uploads, no privacy concerns.</p>
+                </div>
+
+                <!-- Feature 6 -->
+                <div class="bg-white p-8 rounded-2xl shadow-lg feature-card">
+                    <div class="w-14 h-14 gradient-bg rounded-xl flex items-center justify-center mb-4">
+                        <i class="fas fa-file-export text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Multiple Export Options</h3>
+                    <p class="text-gray-600">Merged video, individual clips, timestamps, XML for Premiere. You choose.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section id="how-it-works" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+                    Simple as 1-2-3
+                </h2>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-12">
+                <div class="text-center">
+                    <div class="w-20 h-20 gradient-bg rounded-full flex items-center justify-center mx-auto mb-6 text-white text-3xl font-bold">
+                        1
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-3">Drop Your Videos</h3>
+                    <p class="text-gray-600 text-lg">Drag and drop your stream VODs into the app. Add as many as you want.</p>
+                </div>
+
+                <div class="text-center">
+                    <div class="w-20 h-20 gradient-bg rounded-full flex items-center justify-center mx-auto mb-6 text-white text-3xl font-bold">
+                        2
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-3">Choose Your Settings</h3>
+                    <p class="text-gray-600 text-lg">Pick a preset (Quick, Safe, or Maximum) or customize exactly how you want it cut.</p>
+                </div>
+
+                <div class="text-center">
+                    <div class="w-20 h-20 gradient-bg rounded-full flex items-center justify-center mx-auto mb-6 text-white text-3xl font-bold">
+                        3
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-3">Hit Process</h3>
+                    <p class="text-gray-600 text-lg">Sit back for 10-20 minutes. Get your perfectly edited content ready to upload.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comparison Section -->
+    <section id="pricing" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+                    Better Than The Competition
+                </h2>
+                <p class="text-xl text-gray-600">
+                    More features at a fraction of the price
+                </p>
+            </div>
+
+            <div class="overflow-x-auto">
+                <table class="w-full bg-white rounded-2xl shadow-lg overflow-hidden">
+                    <thead class="gradient-bg text-white">
+                        <tr>
+                            <th class="py-4 px-6 text-left">Feature</th>
+                            <th class="py-4 px-6 text-center font-bold">StreamCut Pro</th>
+                            <th class="py-4 px-6 text-center">TimeBolt</th>
+                            <th class="py-4 px-6 text-center">Descript</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-200">
+                        <tr>
+                            <td class="py-4 px-6 font-semibold">Price</td>
+                            <td class="py-4 px-6 text-center text-green-600 font-bold">$129 lifetime</td>
+                            <td class="py-4 px-6 text-center">$347 lifetime</td>
+                            <td class="py-4 px-6 text-center">$192/year</td>
+                        </tr>
+                        <tr class="bg-gray-50">
+                            <td class="py-4 px-6 font-semibold">File Size Limit</td>
+                            <td class="py-4 px-6 text-center"><i class="fas fa-check text-green-600"></i> Unlimited</td>
+                            <td class="py-4 px-6 text-center"><i class="fas fa-check text-green-600"></i> Unlimited</td>
+                            <td class="py-4 px-6 text-center"><i class="fas fa-times text-red-600"></i> Limited</td>
+                        </tr>
+                        <tr>
+                            <td class="py-4 px-6 font-semibold">Batch Processing</td>
+                            <td class="py-4 px-6 text-center"><i class="fas fa-check text-green-600"></i></td>
+                            <td class="py-4 px-6 text-center"><i class="fas fa-times text-red-600"></i></td>
+                            <td class="py-4 px-6 text-center"><i class="fas fa-times text-red-600"></i></td>
+                        </tr>
+                        <tr class="bg-gray-50">
+                            <td class="py-4 px-6 font-semibold">AI Detection</td>
+                            <td class="py-4 px-6 text-center"><i class="fas fa-check text-green-600"></i> Whisper AI</td>
+                            <td class="py-4 px-6 text-center"><i class="fas fa-times text-red-600"></i></td>
+                            <td class="py-4 px-6 text-center"><i class="fas fa-check text-green-600"></i></td>
+                        </tr>
+                        <tr>
+                            <td class="py-4 px-6 font-semibold">Local Processing</td>
+                            <td class="py-4 px-6 text-center"><i class="fas fa-check text-green-600"></i> Fast</td>
+                            <td class="py-4 px-6 text-center"><i class="fas fa-check text-green-600"></i> Fast</td>
+                            <td class="py-4 px-6 text-center"><i class="fas fa-times text-red-600"></i> Cloud</td>
+                        </tr>
+                        <tr class="bg-gray-50">
+                            <td class="py-4 px-6 font-semibold">Streamer-Focused</td>
+                            <td class="py-4 px-6 text-center"><i class="fas fa-check text-green-600"></i></td>
+                            <td class="py-4 px-6 text-center"><i class="fas fa-times text-red-600"></i> YouTubers</td>
+                            <td class="py-4 px-6 text-center"><i class="fas fa-times text-red-600"></i> General</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="text-center mt-12">
+                <p class="text-2xl font-bold text-gray-900 mb-6">
+                    Save $200+ and get MORE features
+                </p>
+                <a href="#contact" class="inline-block gradient-bg text-white px-10 py-4 rounded-lg font-bold text-lg hover:opacity-90 transition transform hover:scale-105">
+                    Join The Beta <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+                    Simple, Fair Pricing
+                </h2>
+                <p class="text-xl text-gray-600">
+                    Pay once, use forever. No subscriptions.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                <!-- Beta -->
+                <div class="bg-gray-50 rounded-2xl p-8 border-2 border-gray-200">
+                    <div class="text-sm font-bold text-purple-600 mb-2">BETA</div>
+                    <h3 class="text-3xl font-bold text-gray-900 mb-2">Free</h3>
+                    <p class="text-gray-600 mb-6">Limited spots available</p>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-600 mt-1 mr-2"></i>
+                            <span>Full access to all features</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-600 mt-1 mr-2"></i>
+                            <span>Priority email support</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-600 mt-1 mr-2"></i>
+                            <span>Lifetime updates</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-600 mt-1 mr-2"></i>
+                            <span>Help shape the product</span>
+                        </li>
+                    </ul>
+                    <a href="#contact" class="block text-center bg-gray-200 text-gray-900 px-6 py-3 rounded-lg font-bold hover:bg-gray-300 transition">
+                        Request Beta Access
+                    </a>
+                </div>
+
+                <!-- Early Bird -->
+                <div class="gradient-bg rounded-2xl p-8 text-white transform scale-105 shadow-2xl relative">
+                    <div class="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                        <div class="bg-yellow-400 text-gray-900 px-4 py-1 rounded-full text-sm font-bold">
+                            🔥 BEST VALUE
+                        </div>
+                    </div>
+                    <div class="text-sm font-bold mb-2">EARLY BIRD</div>
+                    <h3 class="text-5xl font-bold mb-2">$79</h3>
+                    <p class="text-purple-100 mb-6">First 100 customers only</p>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-start">
+                            <i class="fas fa-check mt-1 mr-2"></i>
+                            <span>Everything in Beta</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check mt-1 mr-2"></i>
+                            <span>Lock in lifetime price</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check mt-1 mr-2"></i>
+                            <span>Early access to new features</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check mt-1 mr-2"></i>
+                            <span>Founder badge</span>
+                        </li>
+                    </ul>
+                    <a href="#contact" class="block text-center bg-white text-purple-600 px-6 py-3 rounded-lg font-bold hover:bg-gray-100 transition">
+                        Reserve Your Spot
+                    </a>
+                </div>
+
+                <!-- Regular -->
+                <div class="bg-gray-50 rounded-2xl p-8 border-2 border-gray-200">
+                    <div class="text-sm font-bold text-gray-600 mb-2">REGULAR</div>
+                    <h3 class="text-3xl font-bold text-gray-900 mb-2">$129</h3>
+                    <p class="text-gray-600 mb-6">After early bird period</p>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-600 mt-1 mr-2"></i>
+                            <span>Everything in Early Bird</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-600 mt-1 mr-2"></i>
+                            <span>Lifetime license</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-600 mt-1 mr-2"></i>
+                            <span>All future updates</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-green-600 mt-1 mr-2"></i>
+                            <span>Email support</span>
+                        </li>
+                    </ul>
+                    <button disabled class="block w-full text-center bg-gray-200 text-gray-500 px-6 py-3 rounded-lg font-bold cursor-not-allowed">
+                        Coming Soon
+                    </button>
+                </div>
+            </div>
+
+            <div class="text-center mt-12">
+                <p class="text-gray-600">
+                    <i class="fas fa-shield-alt text-green-600 mr-2"></i>
+                    30-day money-back guarantee • <i class="fas fa-lock text-green-600 mx-2"></i> Secure payment
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Proof -->
+    <section class="py-16 bg-purple-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                    Trusted by Streamers Like You
+                </h2>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white p-6 rounded-xl shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-purple-600 rounded-full flex items-center justify-center text-white font-bold mr-3">
+                            JD
+                        </div>
+                        <div>
+                            <div class="font-bold">John_Doe_Gaming</div>
+                            <div class="text-sm text-gray-600">Twitch Partner</div>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 italic">"This saves me 8+ hours per week. I can now upload daily highlights instead of weekly. Game changer!"</p>
+                </div>
+
+                <div class="bg-white p-6 rounded-xl shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-purple-600 rounded-full flex items-center justify-center text-white font-bold mr-3">
+                            SM
+                        </div>
+                        <div>
+                            <div class="font-bold">StreamerMike</div>
+                            <div class="text-sm text-gray-600">Full-time Streamer</div>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 italic">"I was paying an editor $150/stream. This paid for itself in one week. Amazing!"</p>
+                </div>
+
+                <div class="bg-white p-6 rounded-xl shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-purple-600 rounded-full flex items-center justify-center text-white font-bold mr-3">
+                            AK
+                        </div>
+                        <div>
+                            <div class="font-bold">AlexaKills</div>
+                            <div class="text-sm text-gray-600">Variety Streamer</div>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 italic">"The batch processing is INSANE. I processed 15 VODs overnight. Worth every penny."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="py-20 bg-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+                    Frequently Asked Questions
+                </h2>
+            </div>
+
+            <div class="space-y-6">
+                <details class="bg-gray-50 p-6 rounded-xl cursor-pointer">
+                    <summary class="font-bold text-lg text-gray-900">How long does it take to process a video?</summary>
+                    <p class="mt-3 text-gray-600">A 4-hour stream typically takes 5-15 minutes to process depending on your mode choice. FFmpeg-only is fastest (5-10 min), Hybrid takes 10-20 min, and Whisper AI takes 20-30 min.</p>
+                </details>
+
+                <details class="bg-gray-50 p-6 rounded-xl cursor-pointer">
+                    <summary class="font-bold text-lg text-gray-900">Do I need any editing skills?</summary>
+                    <p class="mt-3 text-gray-600">Absolutely not! Just drag your video in, pick a preset (or adjust settings if you want), and hit process. It's that simple.</p>
+                </details>
+
+                <details class="bg-gray-50 p-6 rounded-xl cursor-pointer">
+                    <summary class="font-bold text-lg text-gray-900">What file formats are supported?</summary>
+                    <p class="mt-3 text-gray-600">MP4, MKV, AVI, MOV, FLV, WMV, WebM, M4V, and more. Basically any video format your streaming software exports.</p>
+                </details>
+
+                <details class="bg-gray-50 p-6 rounded-xl cursor-pointer">
+                    <summary class="font-bold text-lg text-gray-900">Is there a file size limit?</summary>
+                    <p class="mt-3 text-gray-600">Nope! Process 14+ hour marathon streams with no issues. Cloud tools typically cap at 2-4 hours.</p>
+                </details>
+
+                <details class="bg-gray-50 p-6 rounded-xl cursor-pointer">
+                    <summary class="font-bold text-lg text-gray-900">Does it work on Mac and Windows?</summary>
+                    <p class="mt-3 text-gray-600">Yes! StreamCut Pro works on Windows, Mac, and Linux. We provide installers for all platforms.</p>
+                </details>
+
+                <details class="bg-gray-50 p-6 rounded-xl cursor-pointer">
+                    <summary class="font-bold text-lg text-gray-900">Is my content uploaded to the cloud?</summary>
+                    <p class="mt-3 text-gray-600">Never. Everything processes locally on your computer. Your content never leaves your machine. 100% private.</p>
+                </details>
+
+                <details class="bg-gray-50 p-6 rounded-xl cursor-pointer">
+                    <summary class="font-bold text-lg text-gray-900">What's the refund policy?</summary>
+                    <p class="mt-3 text-gray-600">30-day money-back guarantee, no questions asked. If it doesn't work for you, we'll refund you.</p>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section id="contact" class="gradient-bg text-white py-20">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-4xl md:text-5xl font-bold mb-6">
+                Ready to Save Hours Every Week?
+            </h2>
+            <p class="text-xl text-purple-100 mb-8">
+                Join 500+ streamers who are already editing faster with StreamCut Pro
+            </p>
+
+            <!-- Email Form -->
+            <div class="max-w-md mx-auto mb-8">
+                <form class="flex flex-col sm:flex-row gap-3" action="https://formspree.io/f/xblrvdnr" method="POST">
+                    <input
+                        type="email"
+                        name="email"
+                        placeholder="Enter your email"
+                        required
+                        class="flex-1 px-6 py-4 rounded-lg text-gray-900 text-lg focus:outline-none focus:ring-4 focus:ring-purple-300"
+                    >
+                    <button
+                        type="submit"
+                        class="bg-gray-900 text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-gray-800 transition transform hover:scale-105"
+                    >
+                        Get Beta Access
+                    </button>
+                </form>
+            </div>
+
+            <p class="text-sm text-purple-100">
+                Beta launching in 2 weeks • Limited spots available
+            </p>
+
+            <div class="mt-8 pt-8 border-t border-purple-400">
+                <p class="text-purple-100">
+                    Questions? Email us at <a href="mailto:twitch@innovativeautomations.dev" class="font-bold underline">twitch@innovativeautomations.dev</a>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-cut text-purple-500 text-xl mr-2"></i>
+                        <span class="font-bold text-lg">StreamCut Pro</span>
+                    </div>
+                    <p class="text-gray-400">Automated video editing for Twitch streamers</p>
+                </div>
+
+                <div>
+                    <h4 class="font-bold mb-4">Product</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#features" class="hover:text-white transition">Features</a></li>
+                        <li><a href="#pricing" class="hover:text-white transition">Pricing</a></li>
+                        <li><a href="https://github.com/IGTA-Tech/twitch-video-editor" class="hover:text-white transition">GitHub</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold mb-4">Support</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="mailto:twitch@innovativeautomations.dev" class="hover:text-white transition">Email Support</a></li>
+                        <li><a href="#" class="hover:text-white transition">Documentation</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold mb-4">Company</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li>Innovative Automations</li>
+                        <li><a href="https://innovativeautomations.dev" class="hover:text-white transition">Website</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 StreamCut Pro by Innovative Automations. All rights reserved.</p>
+                <p class="mt-2 text-sm">Made with ❤️ for the streaming community</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Form Success Message -->
+    <script>
+        // Handle form submission success
+        const forms = document.querySelectorAll('form');
+        forms.forEach(form => {
+            form.addEventListener('submit', function(e) {
+                const button = this.querySelector('button[type="submit"]');
+                button.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Submitting...';
+                button.disabled = true;
+            });
+        });
+    </script>
+
+</body>
+</html>
