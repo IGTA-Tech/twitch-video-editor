@@ -1,0 +1,19 @@
+{
+  "twitch": {
+    "client_id": "YOUR_CLIENT_ID",
+    "client_secret": "YOUR_CLIENT_SECRET",
+    "streamer_username": "YOUR_USERNAME"
+  },
+  "editor": {
+    "output_format": "mp4",
+    "video_quality": "1080p",
+    "target_length_minutes": 60,
+    "intro_template": "config/intro.mp4",
+    "outro_template": "config/outro.mp4"
+  },
+  "processing": {
+    "concurrent_jobs": 2,
+    "temp_directory": "temp/",
+    "output_directory": "output/"
+  }
+}
